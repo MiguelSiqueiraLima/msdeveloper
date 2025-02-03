@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Feliz 1 ano, Nena!</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+       
+    </style>
+</head>
+<body>
+
+    <h1 class="h1">REMEMBER PAGE</h1>
+    <h2 class="h2">Escolha um mês:</h2>
+
+    <!-- Display estilo calculadora -->
+    <div class="calculator-display">
+        <div class="button-container">
+            <script>
+                const meses = [
+                    "Fev", "Mar", "Abr", "Mai", "Jun", "Jul", 
+                    "Ago", "Set", "Out", "Nov", "Dez", "Jan"
+                ];
+
+                meses.forEach((mes, index) => {
+                    document.write(`<button onclick="abrirModal(${index})">${mes}</button>`);
+                });
+            </script>
+        </div>
+    </div>
+
+    <!-- Modal -->
+    <div id="overlay" class="overlay" onclick="fecharModal()"></div>
+    <div id="modal" class="modal">
+        <h3 id="modal-title"></h3>
+        <div id="modal-content"></div>
+        <button class="close-btn" onclick="fecharModal()">Fechar</button>
+
+    </div>
+
+    <script>
+        function abrirModal(mesIndex) {
+            let modal = document.getElementById("modal");
+            let overlay = document.getElementById("overlay");
+            let title = document.getElementById("modal-title");
+            let content = document.getElementById("modal-content");
+
+            const meses = [
+                "Fevereiro", "Março", "Abril", "Maio", "Junho", "Julho", 
+                "Agosto", "Setembro", "Outubro", "Novembro", "Dezembro", "Janeiro"
+            ];
+            title.innerText = `${meses[mesIndex]}`;
+
+            const imagensPorMes = [
+                ["img/fev1.jpg", "img/fev2.jpg", "img/fev3.jpg"],
+                ["img/Mar.jpg", "img/Mar3.jpg", "img/Mar2.jpg"],
+                ["img/Abr1.jpg","img/Abr2.jpg","img/Abr.jpg"],
+              ["img/Mai.jpg","img/Mai1.jpg","img/Mai2.jpg"],
+                ["img/Jun.jpg","img/Jun1.jpg","img/Jun2.jpg"],
+                ["img/Jul.jpg","img/Jul1.jpg","img/Jul2.jpg"],
+                ["img/Ago.jpg","img/Ago1.jpg","img/Ago2.jpg"],
+                ["img/Set.jpg","img/Set1.jpg","img/Set2.jpg"],
+                ["img/Out.jpg","img/Out1.jpg","img/Out2.jpg"],
+                ["img/Nov.jpg","img/Nov1.jpg","img/Nov2.jpg"],
+                ["img/Dez.jpg","img/Dez1.jpg","img/Dez2.jpg"],
+                ["img/Jan.jpg","img/Jan1.jpg","img/Jan2.jpg", "img/Jan3.jpg", "img/Jan4.jpg"]
+            ];
+
+            content.innerHTML = "";
+            imagensPorMes[mesIndex].forEach(imgSrc => {
+                let img = document.createElement("img");
+                img.src = imgSrc;
+                content.appendChild(img);
+            });
+
+            modal.style.display = "block";
+            overlay.style.display = "block";
+        }
+
+        function fecharModal() {
+            document.getElementById("modal").style.display = "none";
+            document.getElementById("overlay").style.display = "none";
+        }
+    </script>
+
+</body>
+</html>
